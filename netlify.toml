@@ -1,41 +1,38 @@
+# ========================
+# Build Settings
+# ========================
 [build]
-  publish = "dist" # Change to your build output folder (e.g., "public")
+  publish = "dist"        # Your React build output folder
   command = "npm run build"
 
 # ========================
 # Redirect Rules
 # ========================
 
-# Redirect root to index.html
+# SPA routing: Serve index.html for all unmatched routes
 [[redirects]]
-  from = "/"
+  from = "/*"
   to = "/index.html"
   status = 200
 
-# Permanent redirect from old pages
+# Example: Permanent redirect from old pages
 [[redirects]]
   from = "/old-page"
   to = "/new-page"
   status = 301
 
-# API proxy routing
+# API proxy routing (if you have a backend API)
 [[redirects]]
   from = "/api/*"
   to = "https://your-api-server.com/:splat"
   status = 200
   force = true
 
-# Handle SPA routes (React/Vue/Angular)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 # ========================
 # Header Rules
 # ========================
 
-# Global headers for all pages
+# Global security headers for all pages
 [[headers]]
   for = "/*"
   [headers.values]
@@ -48,7 +45,7 @@
 
 # Optimized caching for static assets
 [[headers]]
-  for = "/assets/*"
+  for = "/static/*"
   [headers.values]
     Cache-Control = "public, max-age=604800, immutable"
 
