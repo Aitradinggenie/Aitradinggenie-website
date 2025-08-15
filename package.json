@@ -2,12 +2,10 @@
   "name": "ai-trading-genie",
   "version": "1.0.0",
   "description": "AI-powered trading assistant with real-time market insights, charting, and strategy optimization.",
-  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "start": "vite"
+    "build": "rm -rf dist && mkdir dist && cp -R src/* dist/",
+    "dev": "npx serve src",
+    "start": "npx serve dist"
   },
   "keywords": [
     "AI",
@@ -15,14 +13,12 @@
     "crypto",
     "stocks",
     "market-analysis",
-    "vite",
     "javascript",
     "webapp"
   ],
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
-    "vite": "^5.0.0"
-  },
-  "dependencies": {}
+    "serve": "^14.2.0"
+  }
 }
