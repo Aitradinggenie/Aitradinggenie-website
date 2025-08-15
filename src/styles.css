@@ -1,0 +1,46 @@
+.theme-dark {
+  background: #1a1a1a;
+  color: #fff;
+}
+.theme-light {
+  background: #fff;
+  color: #000;
+}
+.nav-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  #navMenu {
+    display: none;
+  }
+  #navMenu.open {
+    display: block;
+  }
+}
+.billing-switch .pill {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.billing-switch .pill.active {
+  background: #64d2ff;
+  color: #fff;
+}
+.good {
+  color: #22c55e;
+}
+.bad {
+  color: #ef4444;
+}
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.card, .feature, .price, .faq details {
+  margin: 1rem 0;
+}
+#heroChart, #priceChart, #pnlChart {
+  max-height: 300px;
+}
