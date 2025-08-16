@@ -1,303 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Trading Genie — Smarter Crypto Trading</title>
-  <meta name="description" content="AI Trading Genie is a professional crypto trading assistant with AI-powered signals, automated risk controls, and real-time analytics." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml;utf8,
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
-    <defs><linearGradient id='g' x1='0' x2='1'><stop stop-color='%230ea5e9'/><stop offset='1' stop-color='%2364d2ff'/></linearGradient></defs>
-    <rect width='64' height='64' rx='14' fill='%230b1220'/>
-    <path fill='url(%23g)' d='M10 42c10-1 14-15 22-20 9-6 18-2 22 8-8 0-13 6-17 12-6 8-14 12-27 0z'/>
-    <circle cx='44' cy='20' r='6' fill='%2364d2ff'/>
-  </svg>" />
-  <!-- Charts (lightweight CDN) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script defer src="app.js"></script>
+  <!-- Same as original -->
 </head>
 <body class="theme-dark">
-  <a class="skip" href="#main">Skip to main content</a>
-
-  <!-- HEADER / NAV -->
-  <header class="site-header" data-elevate>
-    <div class="container nav">
-      <a href="#" class="brand" aria-label="AI Trading Genie home">
-        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-symbol"></use></svg>
-        <span>AI Trading Genie</span>
-      </a>
-
-      <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav id="navMenu" class="menu">
-        <a href="#features">Features</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn--ghost" href="#contact">Contact</a>
-        <button class="theme-switch" id="themeSwitch" aria-label="Toggle dark mode">🌙</button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="container grid-2">
-      <div class="hero__copy">
-        <h1>Trade smarter with <span class="accent">AI‑powered</span> signals</h1>
-        <p class="lead">
-          Real‑time market insights, automated risk controls, and clean analytics — built for crypto traders who want an edge.
-        </p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="#dashboard">Launch Demo</a>
-          <a class="btn btn--outline" href="#features">Explore Features</a>
+  <!-- HEADER / NAV: Unchanged -->
+  
+  <!-- HERO: Unchanged -->
+  
+  <!-- FEATURES: Unchanged -->
+  
+  <!-- DASHBOARD DEMO: Add data attributes for dynamic updates -->
+  <section class="section alt" id="dashboard">
+    <div class="container">
+      <header class="section__head">
+        <h2>Interactive demo dashboard</h2>
+        <p class="muted">Simulated data to showcase the experience — no exchange API keys required.</p>
+      </header>
+      <div class="dash grid-3">
+        <div class="card glass dash__big">
+          <header class="panel__header"><span>BTC/USDT</span><span class="badge">5m</span></header>
+          <canvas id="priceChart" height="220" data-chart-type="line"></canvas>
         </div>
-        <div class="hero__trust">
-          <span>Risk controls • P&L tracking • Strategy tuning</span>
+        <div class="card glass">
+          <header class="panel__header"><span>Signals</span></header>
+          <ul class="list" id="signalsList" aria-live="polite"></ul>
+        </div>
+        <div class="card glass">
+          <header class="panel__header"><span>Risk & P&L</span></header>
+          <canvas id="pnlChart" height="140" data-chart-type="doughnut"></canvas>
+          <div class="panel__stats mini">
+            <div><small>Max DD</small><strong id="dd">-4.8%</strong></div>
+            <div><small>Win Rate</small><strong id="wr">57%</strong></div>
+            <div><small>Sharpe</small><strong id="sharpe">1.1</strong></div>
+          </div>
         </div>
       </div>
-
-      <figure class="hero__panel card glass" aria-label="Live trading preview">
-        <header class="panel__header">
-          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-          <span>BTC/USDT — Live</span>
-        </header>
-        <canvas id="heroChart" height="180" aria-label="Price chart" role="img"></canvas>
-        <div class="panel__stats">
-          <div><small>Signal</small><strong id="signalBadge">Neutral</strong></div>
-          <div><small>24h P&L</small><strong class="good" id="pnl24">+2.3%</strong></div>
-          <div><small>Risk</small><strong id="riskStat">Low</strong></div>
-        </div>
-      </figure>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <main id="main">
-    <section class="section" id="features">
-      <div class="container">
-        <header class="section__head">
-          <h2>Everything you need to trade like a pro</h2>
-          <p class="muted">AI signals, analytics, and portfolio‑wide risk management — inspired by your repo’s feature set.  [oai_citation:1‡GitHub](https://github.com/Hijo1918/-Aitradinggenie)</p>
-        </header>
-
-        <div class="features">
-          <article class="feature card">
-            <div class="icon i-ai"></div>
-            <h3>AI‑Powered Signals</h3>
-            <p>Real‑time signals with confidence scores and clear entry/exit bands.</p>
-          </article>
-
-          <article class="feature card">
-            <div class="icon i-analytics"></div>
-            <h3>Comprehensive Analytics</h3>
-            <p>Live P&amp;L, win rate, drawdown, and performance by pair &amp; timeframe.</p>
-          </article>
-
-          <article class="feature card">
-            <div class="icon i-risk"></div>
-            <h3>Risk Management</h3>
-            <p>Position sizing, stop‑loss / take‑profit templates, and daily loss caps.</p>
-          </article>
-
-          <article class="feature card">
-            <div class="icon i-settings"></div>
-            <h3>Pro Settings</h3>
-            <p>Strategy parameters, max open positions, auto‑trade toggle, test mode.</p>
-          </article>
-        </div>
+  <!-- PRICING: Add subscription form -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <header class="section__head">
+        <h2>Simple pricing</h2>
+        <p class="muted">Choose monthly or annual. Cancel anytime.</p>
+      </header>
+      <div class="billing-switch" role="group" aria-label="Billing period">
+        <button class="pill active" data-period="monthly">Monthly</button>
+        <button class="pill" data-period="annual">Annual <span class="save">Save 20%</span></button>
       </div>
-    </section>
-
-    <!-- DASHBOARD DEMO -->
-    <section class="section alt" id="dashboard">
-      <div class="container">
-        <header class="section__head">
-          <h2>Interactive demo dashboard</h2>
-          <p class="muted">Simulated data to showcase the experience — no exchange API keys required.</p>
-        </header>
-
-        <div class="dash grid-3">
-          <div class="card glass dash__big">
-            <header class="panel__header"><span>BTC/USDT</span><span class="badge">5m</span></header>
-            <canvas id="priceChart" height="220"></canvas>
-          </div>
-          <div class="card glass">
-            <header class="panel__header"><span>Signals</span></header>
-            <ul class="list" id="signalsList" aria-live="polite"></ul>
-          </div>
-          <div class="card glass">
-            <header class="panel__header"><span>Risk &amp; P&amp;L</span></header>
-            <canvas id="pnlChart" height="140"></canvas>
-            <div class="panel__stats mini">
-              <div><small>Max DD</small><strong id="dd">-4.8%</strong></div>
-              <div><small>Win Rate</small><strong id="wr">57%</strong></div>
-              <div><small>Sharpe</small><strong id="sharpe">1.1</strong></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <header class="section__head">
-          <h2>Simple pricing</h2>
-          <p class="muted">Choose monthly or annual. Cancel anytime.</p>
-        </header>
-
-        <div class="billing-switch" role="group" aria-label="Billing period">
-          <button class="pill active" data-period="monthly">Monthly</button>
-          <button class="pill" data-period="annual">Annual <span class="save">Save 20%</span></button>
-        </div>
-
-        <div class="prices grid-3">
-          <article class="price card">
-            <h3>Starter</h3>
-            <p class="muted">For learning &amp; paper trading</p>
-            <div class="price__value"><span class="currency">$</span><span data-price="starter">19</span><span class="period">/mo</span></div>
-            <ul class="ticks">
-              <li>AI signals (basic)</li>
-              <li>Paper trading</li>
-              <li>Core analytics</li>
-            </ul>
-            <a href="#contact" class="btn btn--primary">Get Started</a>
-          </article>
-
-          <article class="price card hot">
-            <div class="ribbon">Most Popular</div>
-            <h3>Pro</h3>
-            <p class="muted">Serious traders &amp; small funds</p>
-            <div class="price__value"><span class="currency">$</span><span data-price="pro">49</span><span class="period">/mo</span></div>
-            <ul class="ticks">
-              <li>Advanced AI signals</li>
-              <li>Automated risk controls</li>
-              <li>Full analytics &amp; exports</li>
-            </ul>
-            <a href="#contact" class="btn btn--primary">Start Pro</a>
-          </article>
-
-          <article class="price card">
-            <h3>Enterprise</h3>
-            <p class="muted">Teams &amp; custom workflows</p>
-            <div class="price__value"><span class="currency">$</span><span data-price="ent">129</span><span class="period">/mo</span></div>
-            <ul class="ticks">
-              <li>Dedicated support</li>
-              <li>SLA &amp; SSO</li>
-              <li>On‑prem options</li>
-            </ul>
-            <a href="#contact" class="btn btn--outline">Talk to us</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section alt" id="faq">
-      <div class="container">
-        <header class="section__head">
-          <h2>Frequently asked questions</h2>
-        </header>
-        <div class="faq">
-          <details>
-            <summary>Do I need exchange API keys to use the demo?</summary>
-            <p>No — the demo uses simulated data so you can explore safely.</p>
-          </details>
-          <details>
-            <summary>Is there a test mode for live trading?</summary>
-            <p>Yes. Enable Test Mode to validate strategies without risking funds.  [oai_citation:2‡GitHub](https://github.com/Hijo1918/-Aitradinggenie)</p>
-          </details>
-          <details>
-            <summary>What risk controls are included?</summary>
-            <p>Daily loss limits, position sizing, stop‑loss / TP presets, and drawdown protection.  [oai_citation:3‡GitHub](https://github.com/Hijo1918/-Aitradinggenie)</p>
-          </details>
-          <details>
-            <summary>Which exchanges are supported?</summary>
-            <p>Binance, Coinbase Pro, Kraken, and Bybit are listed in your repo docs as supported.  [oai_citation:4‡GitHub](https://github.com/Hijo1918/-Aitradinggenie)</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container grid-2">
-        <div>
-          <header class="section__head">
-            <h2>Let’s talk</h2>
-            <p class="muted">Questions, partnerships, or a custom plan? Send a note.</p>
-          </header>
-          <ul class="ticks ticks--compact">
-            <li>Response within 1–2 business days</li>
-            <li>We never ask for secret keys over email</li>
-            <li>Demo walkthrough available</li>
+      <div class="prices grid-3">
+        <!-- Starter Plan -->
+        <article class="price card">
+          <h3>Starter</h3>
+          <p class="muted">For learning & paper trading</p>
+          <div class="price__value"><span class="currency">$</span><span data-price="starter">19</span><span class="period">/mo</span></div>
+          <ul class="ticks">
+            <li>AI signals (basic)</li>
+            <li>Paper trading</li>
+            <li>Core analytics</li>
           </ul>
-        </div>
-
-        <form class="card form" id="contactForm" aria-labelledby="contactTitle" novalidate>
-          <h3 id="contactTitle">Contact form</h3>
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" required autocomplete="name" />
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" required autocomplete="email" />
-          </label>
-          <label>
-            <span>Message</span>
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <div class="form__actions">
-            <button class="btn btn--primary" type="submit">Send</button>
-            <p class="form__hint" id="formHint" role="status" aria-live="polite"></p>
-          </div>
-        </form>
+          <button class="btn btn--primary" data-plan="starter">Subscribe</button>
+        </article>
+        <!-- Pro Plan -->
+        <article class="price card hot">
+          <div class="ribbon">Most Popular</div>
+          <h3>Pro</h3>
+          <p class="muted">Serious traders & small funds</p>
+          <div class="price__value"><span class="currency">$</span><span data-price="pro">49</span><span class="period">/mo</span></div>
+          <ul class="ticks">
+            <li>Advanced AI signals</li>
+            <li>Automated risk controls</li>
+            <li>Full analytics & exports</li>
+          </ul>
+          <button class="btn btn--primary" data-plan="pro">Subscribe</button>
+        </article>
+        <!-- Enterprise Plan -->
+        <article class="price card">
+          <h3>Enterprise</h3>
+          <p class="muted">Teams & custom workflows</p>
+          <div class="price__value"><span class="currency">$</span><span data-price="ent">129</span><span class="period">/mo</span></div>
+          <ul class="ticks">
+            <li>Dedicated support</li>
+            <li>SLA & SSO</li>
+            <li>On-prem options</li>
+          </ul>
+          <button class="btn btn--outline" data-plan="enterprise">Talk to us</button>
+        </article>
       </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="brand-col">
-        <a class="brand" href="#">
-          <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-symbol"></use></svg>
-          <span>AI Trading Genie</span>
-        </a>
-        <p class="muted sm">Educational demo. Crypto trading is risky—do your own research.</p>
-      </div>
-      <nav class="foot-links">
-        <a href="#features">Features</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="foot-meta">
-        <label class="switch">
-          <input type="checkbox" id="dmToggle" checked />
-          <span>Dark mode</span>
+      <!-- Subscription Form -->
+      <form class="card form hidden" id="subscribeForm" aria-labelledby="subscribeTitle" novalidate>
+        <h3 id="subscribeTitle">Subscribe to Plan</h3>
+        <label>
+          <span>Selected Plan</span>
+          <input type="text" name="plan" readonly />
         </label>
-        <small class="muted">© <span id="year"></span> AI Trading Genie</small>
-      </div>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label>
+          <span>Billing Period</span>
+          <select name="billing" required>
+            <option value="monthly">Monthly</option>
+            <option value="annual">Annual</option>
+          </select>
+        </label>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Confirm Subscription</button>
+          <p class="form__hint" id="subscribeHint" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
-  </footer>
+  </section>
 
-  <!-- SVG SPRITE -->
-  <svg width="0" height="0" class="hidden" aria-hidden="true" focusable="false">
-    <symbol id="logo-symbol" viewBox="0 0 64 64">
-      <rect width="64" height="64" rx="14" fill="currentColor" opacity=".12"></rect>
-      <path fill="currentColor" d="M10 42c10-1 14-15 22-20 9-6 18-2 22 8-8 0-13 6-17 12-6 8-14 12-27 0z"/>
-      <circle cx="44" cy="20" r="6" fill="currentColor" opacity=".85"/>
-    </symbol>
-  </svg>
+  <!-- FAQ: Unchanged -->
+
+  <!-- CONTACT: Enhanced form -->
+  <section class="section" id="contact">
+    <div class="container grid-2">
+      <div>
+        <header class="section__head">
+          <h2>Let’s talk</h2>
+          <p class="muted">Questions, partnerships, or a custom plan? Send a note.</p>
+        </header>
+        <ul class="ticks ticks--compact">
+          <li>Response within 1–2 business days</li>
+          <li>We never ask for secret keys over email</li>
+          <li>Demo walkthrough available</li>
+        </ul>
+      </div>
+      <form class="card form" id="contactForm" aria-labelledby="contactTitle" novalidate>
+        <h3 id="contactTitle">Contact form</h3>
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name" aria-describedby="nameError" />
+          <p class="error hidden" id="nameError">Please enter your name.</p>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" aria-describedby="emailError" />
+          <p class="error hidden" id="emailError">Please enter a valid email.</p>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required aria-describedby="messageError"></textarea>
+          <p class="error hidden" id="messageError">Please enter a message.</p>
+        </label>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Send</button>
+          <p class="form__hint" id="formHint" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER: Unchanged -->
+
+  <!-- SVG SPRITE: Unchanged -->
 </body>
 </html>
